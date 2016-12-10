@@ -1,0 +1,10 @@
+{
+  "name": "creating a bar code converter",
+  "version": "1.0.0",
+  "description": "Convert CSV to Barcode",
+  "dependencies": {
+    "barcode": "^0.1.0",
+    "csvtojson": "^1.0.3",
+    "write": "^0.3.2"
+  }
+}
