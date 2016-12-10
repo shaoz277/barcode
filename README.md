@@ -6,8 +6,8 @@ Barcode Encryption: Code39
 2. [Install GraphicsMagick](http://www.graphicsmagick.org/)
 
 # Getting Started   
-Get the csv file and save it to the folder as ```data.csv```   
+1. Get the csv file and save it to the folder as ```data.csv```   
 
-Double click the ```execute.bat```   
+2. Double click the ```execute.bat```   
 
-Open ```load_lists``` folder and double click the html file
+3. Open ```load_lists``` folder and double click the html file
