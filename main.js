@@ -1,44 +1,39 @@
 // Convert CSV to JSON
-var Converter = require("csvtojson").Converter;
-var converter = new Converter({});
+var Converter = require("csvtojson").Converter
+var converter = new Converter({})
 
 converter.fromFile("data.csv", function(err, result) {
-	function doExist(array, uniqueValues) {
-		for (var i = 0; i < uniqueValues.length; i++) {
-			if (array[0] == uniqueValues["material"] && array[1] == uniqueValues["batch"]) {
-				console.log('exist');
-				return false
-			}
-		}
-		return true
-	}
-
 	// Creating Obj with unique value
-	var uniqueValues = {};
-	var counter = 0;
-	
+	var uniqueValues = {}
+	var indexValues = {}
+	var index = 0
+
 	for (var i = 0; i < result.length; i++) {
-		var tempObj = {};
-		var tempArray = [];
-		var material = result[i].Material;
-		var batch = result[i].Batch;
-		// var quantity = result[i].Quantity;
-
-		tempObj["material"] = material;
-		tempObj["batch"] = batch;
-		tempObj["quantity"] = 0;
-
-		tempArray.push(material);
-		tempArray.push(batch);
-
-		if (doExist(tempArray, uniqueValues)) {
-			counter += 1;
-			uniqueValues[counter] = tempObj;
-		}
-
-		// uniqueValues[i] = tempObj;
+		var tempObj = {}
+		tempObj["material"] = result[i].Material
+		tempObj["batch"] = result[i].Batch
+		tempObj["quantity"] = result[i].Quantity;
+		indexValues[i] = tempObj;
+		
 	}
-	// console.log(uniqueValues)
+
+	for (key in indexValues) {
+		var tempObj = {}
+		tempObj["material"] = indexValues[key].material
+		tempObj["batch"] = indexValues[key].batch
+		tempObj["quantity"] = indexValues[key].quantity
+
+		if (uniqueValues.length == undefined) {
+			uniqueValues[index] = tempObj
+			index += 1
+		} else {
+			// uniqueValues[index] = tempObj
+			// index += 1
+
+		}
+	}
+	console.log(uniqueValues)
+	
 });
 
 

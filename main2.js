@@ -2,10 +2,6 @@
 var Converter = require("csvtojson").Converter;
 var converter = new Converter({});
 
-// var deasync = require('deasync');
-// var cp = require('child_process');
-// var exec = deasync(cp.exec);
-
 var data = {};
 
 function Convert() {
@@ -42,10 +38,34 @@ function doExist(array, uniqueValues) {
 	return true
 }
 
-function main(){
+function main() {
 	Convert();
 	SyncFunction();
-	console.log(data);
+
+	// Creating Obj with unique value
+	var uniqueValues = {};
+	var counter = 0;
+	for (var i = 0; i < Object.keys(data).length; i++) {
+		var tempObj = {};
+		var tempArray = [];
+		var material = data[i].Material;
+		var batch = data[i].Batch;
+		// var quantity = data[i].Quantity;
+
+		tempObj["material"] = material;
+		tempObj["batch"] = batch;
+		tempObj["quantity"] = 0;
+
+		tempArray.push(material);
+		tempArray.push(batch);
+
+		console.log(tempArray);
+
+		if (doExist(tempArray, uniqueValues)) {
+			counter += 1;
+			// uniqueValues[counter] = tempObj;
+		}
+	}
 }
 
 main();
