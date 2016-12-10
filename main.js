@@ -4,36 +4,25 @@ var converter = new Converter({})
 
 converter.fromFile("data.csv", function(err, result) {
 	// Creating Obj with unique value
-	var uniqueValues = {}
-	var indexValues = {}
-	var index = 0
+	var dataObj = {}
 
 	for (var i = 0; i < result.length; i++) {
-		var tempObj = {}
-		tempObj["material"] = result[i].Material
-		tempObj["batch"] = result[i].Batch
-		tempObj["quantity"] = result[i].Quantity;
-		indexValues[i] = tempObj;
-		
+		var material = result[i].Material
+		var batch = result[i].Batch
+		var quantity = result[i].Quantity
+		var key = material + ";" + batch
+		// console.log(key)
+		dataObj[key] = 0
 	}
 
-	for (key in indexValues) {
-		var tempObj = {}
-		tempObj["material"] = indexValues[key].material
-		tempObj["batch"] = indexValues[key].batch
-		tempObj["quantity"] = indexValues[key].quantity
+	// Add quantities
+	for (var i = 0; i < result.length; i++) {
+		var key = result[i].Material + ";" + result[i].Batch
+		var quantity = result[i].Quantity
+		dataObj[key] = dataObj[key] + quantity
 
-		if (uniqueValues.length == undefined) {
-			uniqueValues[index] = tempObj
-			index += 1
-		} else {
-			// uniqueValues[index] = tempObj
-			// index += 1
-
-		}
 	}
-	console.log(uniqueValues)
-	
+	console.log(dataObj)
 });
 
 

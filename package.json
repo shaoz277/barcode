@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Convert CSV to Barcode",
   "dependencies": {
+    "array-unique": "^0.3.2",
     "csvtojson": "^1.0.3",
     "deasync": "^0.1.9"
   }
