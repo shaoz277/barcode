@@ -15,19 +15,25 @@ converter.fromFile("data.csv", function(err, result) {
 		dataObj[key] = 0
 	}
 
-	// Add quantities
+	// Add Quantities
 	for (var i = 0; i < result.length; i++) {
 		var key = result[i].Material + ";" + result[i].Batch
 		var quantity = result[i].Quantity
 		dataObj[key] = dataObj[key] + quantity
 
 	}
-	console.log(dataObj)
+
+	// Create Strings
+	var strArray = []
+	for (key in dataObj) {
+		var tempStr = key + ";" dataObj[key]
+		console.log(tempStr)
+	}
 });
 
 
 
-// Add Quantities
+
 
 // Create Bar Codes
 
