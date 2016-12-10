@@ -2,9 +2,9 @@
 var Converter = require("csvtojson").Converter;
 var converter = new Converter({});
 
-var deasync = require('deasync');
-var cp = require('child_process');
-var exec = deasync(cp.exec);
+// var deasync = require('deasync');
+// var cp = require('child_process');
+// var exec = deasync(cp.exec);
 
 var data = {};
 
