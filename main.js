@@ -26,15 +26,12 @@ converter.fromFile("data.csv", function(err, result) {
 	// Create Strings
 	var strArray = []
 	for (key in dataObj) {
-		var tempStr = key + ";" dataObj[key]
-		console.log(tempStr)
+		var tempStr = key + ";" + dataObj[key]
+		strArray.push(tempStr)
 	}
+
+	// Writing results to CSV
+	var write = require('fs').writeFile
+	write('temp/temp_data.csv', strArray)
 });
 
-
-
-
-
-// Create Bar Codes
-
-// Create HTML page
